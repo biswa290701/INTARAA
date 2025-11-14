@@ -49,32 +49,9 @@
                 <a href="forgot_password.html" style="color:#5498ba; font-weight:bold;">Forgot Password?</a>
             </p>
         </div>
-
     </div>
 
-    <script>
-    document.getElementById("signinForm").addEventListener("submit", function(e) {
-    e.preventDefault(); // prevent page reload
-    
-    let email = document.getElementById("email").value;
-    let password = document.getElementById("password").value;
-
-    // TEMPORARY AUTH (until real backend)
-    if (email === "test@example.com" && password === "123456") {
-        
-        // Store login state
-        localStorage.setItem("loggedIn", "true");
-        localStorage.setItem("userEmail", email);
-
-        window.location.href = "index.html";
-    } else {
-        alert("Invalid email or password (demo mode).");
-    }
-    });
-    </script>
-
+<script src="../js/navbarsettings.js"></script>
 
 </body>
-
-
 </html>

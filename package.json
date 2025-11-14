@@ -12,8 +12,12 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "body-parser": "^2.2.0",
+    "connect-mongodb-session": "^5.0.0",
     "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "mongodb": "^7.0.0",
     "mongoose": "^8.19.3",
     "nodemailer": "^7.0.10",
     "nodemon": "^3.1.11"

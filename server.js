@@ -2,14 +2,50 @@ const express = require("express");
 const path = require("path");
 const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+const User = require("./models/User");
+
+const session = require("express-session");
+const MongoDBStore = require("connect-mongodb-session")(session);
+
+const store = new MongoDBStore({
+  uri: "mongodb+srv://biswa290701:Biswa%406226@cluster0.evxomlf.mongodb.net/INTARAA",
+  collection: "sessions"
+});
+
+store.on("error", function(error) {
+  console.error("SESSION STORE ERROR:", error);
+});
 
 const app = express();
+app.set("trust proxy", 1);
+
 const PORT = process.env.PORT || 3000;
+
+mongoose.connect("mongodb+srv://biswa290701:Biswa%406226@cluster0.evxomlf.mongodb.net/INTARAA?retryWrites=true&w=majority&appName=Cluster0", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log("✅ Connected to MongoDB Atlas"))
+.catch(err => console.error("❌ MongoDB connection error:", err));
+
 
 // Middleware
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(session({
+  secret: "supersecretintaraa123", // change to anything strong
+  resave: false,
+  saveUninitialized: false,
+  store: store,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 // 1 day
+  }
+}));
+
 
 // POST route for contact form
 app.post("/contact", (req, res) => {
@@ -82,27 +118,99 @@ Message: ${message}
   });
 });
 
-app.post("/signin", (req, res) => {
+app.post("/signin", async (req, res) => {
   const { email, password } = req.body;
-  console.log("User attempting login:", email);
 
-  // For now, just redirect
-  res.redirect("/thankyou.html");
+  try {
+    // 1. Check if user exists
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.send("❌ No account found with this email.");
+    }
+
+    // 2. Compare passwords
+    const match = await bcrypt.compare(password, user.password);
+    if (!match) {
+      return res.send("❌ Incorrect password.");
+    }
+
+    console.log("User logged in:", email);
+
+    // ⭐⭐⭐ STEP 5 — SAVE SESSION HERE ⭐⭐⭐
+    req.session.user = {
+      id: user._id,
+      name: user.name,
+      email: user.email
+    };
+
+    console.log("SESSION CREATED:", req.session.user);
+    console.log("FULL SESSION OBJECT:", req.session);
+
+    // 3. Redirect after creating session
+    return res.redirect("/index.html");
+
+  } catch (err) {
+    console.error(err);
+    return res.status(500).send("❌ Something went wrong.");
+  }
+  console.log("SESSION CREATED:", req.session.user);
 });
 
-app.post("/signup", (req, res) => {
+
+app.post("/signup", async (req, res) => {
+  console.log("📩 SIGNUP ROUTE HIT");
   const { name, email, password, confirm } = req.body;
 
-  // Simple validation
   if (password !== confirm) {
-    return res.send("Passwords do not match.");
+    return res.send("❌ Passwords do not match.");
   }
 
-  console.log("New user signed up:", email);
+  try {
+    // Check if email already exists
+    const existing = await User.findOne({ email });
+    if (existing) {
+      return res.send("❌ Email is already registered.");
+    }
 
-  // For now, just redirect
-  res.redirect("/thankyou.html");
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create new user
+    const user = new User({
+      name,
+      email,
+      password: hashedPassword
+    });
+
+    await user.save();
+
+    console.log("New user created:", email);
+
+    // Redirect to Sign In page after successful sign-up
+    res.redirect("/signin.html");
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("❌ Something went wrong.");
+  }
 });
+
+app.get("/logout", (req, res) => {
+  req.session.destroy(() => {
+    res.redirect("/signin.html");
+  });
+});
+
+app.get("/session-user", (req, res) => {
+  if (req.session.user) {
+    return res.json({
+      loggedIn: true,
+      name: req.session.user.name
+    });
+  }
+  res.json({ loggedIn: false });
+});
+
 
 app.post("/forgot-password", (req, res) => {
   const { email } = req.body;
