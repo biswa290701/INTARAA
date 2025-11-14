@@ -1,0 +1,164 @@
+/* Page Layout */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: #5498ba;
+    padding: 1rem 5%;  /* was 17px 60px → 1rem ≈ 16px, 5% adjusts with screen width */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 1.875rem;  /* was 30px → 30/16 = 1.875rem */
+    color: #fff;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;  /* was 30px → roughly 2rem */
+}
+
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.125rem;  /* was 18px → 18/16 = 1.125rem */
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: #1a3340;
+}
+
+.demo-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+    background-image: url('../image/img.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    gap: 2rem;
+}
+
+/* Left Side */
+.demo-left {
+    flex: 1 1 45%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.demo-left h1 {
+    font-size: 2.5rem;
+    color: #1a3340;
+    margin-bottom: 1rem;
+}
+
+.demo-left p {
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.demo-video {
+    width: 100%;
+    height: 280px;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.demo-video video {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Right Side */
+.demo-right {
+    flex: 1 1 45%;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.demo-right h2 {
+    color: #1a3340;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+    color: #1a3340;
+}
+
+input, textarea, select {
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 2px solid #5498ba;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #1a3340;
+    box-shadow: 0 0 5px rgba(84, 152, 186, 0.5);
+}
+
+button {
+    background-color: #5498ba;
+    color: #fff;
+    padding: 0.9rem 2rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #fff;
+    color: #1a3340;
+    border: 2px solid #5498ba;
+}
+
+@media (max-width: 900px) {
+    .demo-section {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    }
+    .demo-left, .demo-right {
+    width: 100%;
+    max-width: 600px;
+    }
+    .demo-left h1 {
+    font-size: 2rem;
+    }
+}

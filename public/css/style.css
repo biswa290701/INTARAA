@@ -1,0 +1,389 @@
+/* Global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: #5498ba;
+    padding: 1rem 5%;  /* was 17px 60px → 1rem ≈ 16px, 5% adjusts with screen width */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 1.875rem;  /* was 30px → 30/16 = 1.875rem */
+    color: #fff;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;  /* was 30px → roughly 2rem */
+}
+
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.125rem;  /* was 18px → 18/16 = 1.125rem */
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: #1a3340;
+}
+
+/* Hero Section */
+.new_hope {
+    height: 100vh;
+    background-image: url('../image/img.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #000000;
+    padding: 0 5%;  /* ensures text doesn’t touch screen edges */
+}
+
+.new_hope h1 {
+    font-size: 3.3125rem;  /* was 53px → 53/16 = 3.3125rem */
+}
+
+.new_hope p {
+    font-size: 1.125rem;  /* was 18px */
+    margin: 1.25rem 0;  /* was 20px → 20/16 = 1.25rem */
+}
+
+.new_hope .btn {
+    display: inline-flex;
+    padding: 0.75rem 1.25rem;  /* was 12px 20px → 0.75rem 1.25rem */
+    background-color: #5498ba;
+    color: #fff;
+    font-size: 1.125rem;
+    letter-spacing: 0.0625rem; /* was 1px */
+    text-decoration: none;
+    border-radius: 0.3125rem;  /* was 5px → 5/16 = 0.3125rem */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.new_hope .btn:hover {
+    background-color: #fff;
+    color: #1a3340;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+
+    .navbar ul li a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0;
+    }
+
+    .new_hope h1 {
+        font-size: 2rem;
+    }
+
+    .new_hope p {
+        font-size: 1rem;
+    }
+
+    .new_hope .btn {
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
+    }
+}
+
+/* Contact page specific styles */
+.contact-section {
+    min-height: 100vh;
+    background-image: url('../image/img.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #1a3340;
+    text-align: center;
+    padding: 4rem 1rem;
+}
+
+.contact-section h1 {
+    font-size: 3rem;
+    color: #000;
+    margin-bottom: 1rem;
+}
+
+.contact-section p {
+    font-size: 1.2rem;
+    color: #333;
+    max-width: 600px;
+    margin-bottom: 2rem;
+}
+
+.contact-form {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+}
+
+.contact-form label {
+    display: block;
+    font-weight: bold;
+    color: #1a3340;
+    text-align: left;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #5498ba;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #1a3340;
+    box-shadow: 0 0 5px rgba(84, 152, 186, 0.5);
+}
+
+.contact-form textarea {
+    resize: none;
+    min-height: 120px;
+}
+
+.contact-form button {
+    background-color: #5498ba;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 2rem;
+    margin-top: 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #fff;
+    color: #1a3340;
+    border: 2px solid #5498ba;
+}
+
+@media (max-width: 768px) {
+    .contact-section h1 {
+    font-size: 2.2rem;
+    }
+
+    .contact-form {
+    padding: 1.5rem;
+    }
+}
+
+/* Pricing Page Styles */
+.pricing-section {
+    min-height: 100vh;
+    background-image: url('../image/img.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #1a3340;
+}
+
+.pricing-section h1 {
+    font-size: 3rem;
+    color: #000;
+    margin-bottom: 1rem;
+}
+
+.pricing-section p {
+    max-width: 700px;
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    color: #333;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.pricing-card {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    transition: all 0.3s ease;
+    border-top: 6px solid #5498ba;
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.pricing-card h3 {
+    font-size: 1.7rem;
+    color: #1a3340;
+    margin-bottom: 0.5rem;
+}
+
+.pricing-card .price {
+    font-size: 2.5rem;
+    color: #5498ba;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+.pricing-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.pricing-card ul li {
+    font-size: 1rem;
+    color: #333;
+    margin: 0.6rem 0;
+}
+
+.pricing-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.8rem 1.8rem;
+    background-color: #5498ba;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.pricing-btn:hover {
+    background-color: #fff;
+    color: #1a3340;
+    border: 2px solid #5498ba;
+}
+
+@media (max-width: 768px) {
+    .pricing-section h1 {
+    font-size: 2.3rem;
+    }
+}
+
+/* Background behind the sign-in form */
+.signin-page-bg {
+    min-height: 100vh;
+    background-image: url('../image/img.jpg'); /* adjust path if needed */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* White card */
+.signin-box {
+    background: rgba(255, 255, 255, 0.9); 
+    padding: 2.5rem;
+    max-width: 420px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    backdrop-filter: blur(5px);
+}
+
+.signin-box h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #1a3340;
+    font-size: 2rem;
+}
+
+.signin-box label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: bold;
+}
+
+.signin-box input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 1.2rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.signin-box button {
+    width: 100%;
+    padding: 12px;
+    background: #5498ba;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: bold;
+}
+
+.signin-box button:hover {
+    background: #1a3340;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.signup-link a {
+    color: #5498ba;
+    text-decoration: none;
+    font-weight: bold;
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Therapy AI | INTARAA</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    /* Layout */
+    .product-detail {
+      background-image: url('../image/img.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      padding: 4rem 2rem;
+      color: #1a3340;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .product-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      width: 100%;
+      max-width: 1100px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 1rem;
+      padding: 3rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Left side: text */
+    .product-text {
+      flex: 1 1 50%;
+      text-align: left;
+    }
+
+    .product-text h1 {
+      font-size: 2.5rem;
+      color: #000;
+      margin-bottom: 1rem;
+    }
+
+    .product-text p {
+      font-size: 1.1rem;
+      color: #333;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Right side: video */
+    .product-video {
+      flex: 1 1 45%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .product-video video {
+      width: 100%;
+      max-width: 480px;
+      max-height: 250px;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      border: none;
+      background: #000;
+    }
+
+    /* Demo button */
+    .demo-btn {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      background-color: #5498ba;
+      color: #fff;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .demo-btn:hover {
+      background-color: #fff;
+      color: #1a3340;
+      border: 2px solid #5498ba;
+    }
+
+    /* Responsive for smaller screens */
+    @media (max-width: 900px) {
+      .product-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .product-text {
+        text-align: center;
+      }
+
+      .product-video video {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <h1 class="logo">INTARAA</h1>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../products.html">Products</a></li>
+      <li><a href="../pricing.html">Pricing</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </header>
+
+  <section class="product-detail">
+    <div class="product-content">
+      <!-- Left: Description -->
+      <div class="product-text">
+        <h1>Therapy AI</h1>
+        <p>
+          The <strong>Therapy AI</strong> is a next-generation empathetic assistant powered by INTARAA’s emotional
+          intelligence engine. It understands human tone, context, and emotion — creating authentic and emotionally
+          aware conversations.
+        </p>
+        <p>
+          From personal wellness support to business chatbots, it adapts dynamically to human emotion in real time,
+          providing empathy-driven interactions that redefine how technology connects with people.
+        </p>
+        <a href="../game.html" class="demo-btn">Try the Demo</a>
+      </div>
+
+      <!-- Right: Video -->
+      <div class="product-video">
+        <video controls poster="../image/product1.jpg">
+          <source src="../video/ai_companion.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

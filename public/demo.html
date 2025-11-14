@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Demo | INTARAA</title>
+  <link rel="stylesheet" href="css/demopage.css">
+
+</head>
+
+<body>
+  <header class="navbar">
+    <h1 class="logo">INTARAA</h1>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="signin.html">Sign In</a></li>
+    </ul>
+  </header>
+
+  <section class="demo-section">
+    <!-- Left Side: Video and Info -->
+    <div class="demo-left">
+    <h1>What to Expect from the Demo</h1>
+    <p>Get a walkthrough of how INTARAA’s intelligent emotional analysis and AI empathy system works. Experience real-time interactions and learn how our technology adapts to your needs.</p>
+  
+    <div class="demo-video">
+        <video controls poster="image/product1.jpg">
+        <source src="video/demo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+        </video>
+    </div>
+    </div>
+
+
+    <!-- Right Side: Booking Form -->
+<div class="demo-right">
+  <h2>Book a Demo</h2>
+
+  <form action="/demo" method="POST">
+
+    <label for="name">Full Name</label>
+    <input 
+      type="text" 
+      id="name" 
+      name="name" 
+      placeholder="Enter your name" 
+      required>
+
+    <label for="email">Email Address</label>
+    <input 
+      type="email" 
+      id="email" 
+      name="email" 
+      placeholder="Enter your email" 
+      required>
+
+    <label for="company">Company / Organization</label>
+    <input 
+      type="text" 
+      id="company" 
+      name="company" 
+      placeholder="Your company name">
+
+    <label for="role">Your Role</label>
+    <select id="role" name="role" required>
+      <option value="">Select your role</option>
+      <option value="founder">Founder / CEO</option>
+      <option value="developer">Developer</option>
+      <option value="researcher">Researcher</option>
+      <option value="student">Student</option>
+      <option value="other">Other</option>
+    </select>
+
+    <label for="message">Message or Specific Requests</label>
+    <textarea 
+      id="message" 
+      name="message" 
+      placeholder="Tell us what you'd like to see in the demo..." 
+      rows="4"></textarea>
+
+    <button type="submit">Submit Request</button>
+  </form>
+</div>
+
+  </section>
+</body>
+</html>

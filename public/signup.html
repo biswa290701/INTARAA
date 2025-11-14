@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up – SympathAI</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .signup-page-bg {
+            min-height: 100vh;
+            background-image: url('image/img.jpg'); /* update path if needed */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .signup-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2.5rem;
+            max-width: 450px;
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            backdrop-filter: blur(5px);
+        }
+
+        .signup-box h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #1a3340;
+            font-size: 2rem;
+        }
+
+        .signup-box label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: bold;
+            color: #1a3340;
+        }
+
+        .signup-box input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 1.2rem;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        .signup-box button {
+            width: 100%;
+            padding: 12px;
+            background: #5498ba;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s ease;
+            font-weight: bold;
+        }
+
+        .signup-box button:hover {
+            background: #1a3340;
+        }
+
+        .signin-link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .signin-link a {
+            color: #5498ba;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <h1 class="logo">SympathAI</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="signin.html">Sign In</a></li>
+        </ul>
+    </header>
+
+    <div class="signup-page-bg">
+        <div class="signup-box">
+            <h2>Create Your Account</h2>
+
+            <form action="/signup" method="POST">
+
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Create a password" required>
+
+                <label for="confirm">Confirm Password</label>
+                <input type="password" id="confirm" name="confirm" placeholder="Re-enter password" required>
+
+                <button type="submit">Sign Up</button>
+            </form>
+
+            <div class="signin-link">
+                <p>Already have an account? <a href="signin.html">Sign In</a></p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

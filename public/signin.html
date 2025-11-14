@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In – INTARAA</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <header class="navbar">
+        <h1 class="logo">INTARAA</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="signin.html">Sign In</a></li>
+        </ul>
+    </header>
+
+    <!-- ⭐ SIGN IN SECTION WITH BACKGROUND IMAGE ⭐ -->
+    <div class="signin-page-bg">
+
+        <div class="signin-box">
+            <h2>Sign In</h2>
+
+            <form action="/signin" method="POST">
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+
+                <button type="submit">Sign In</button>
+            </form>
+
+            <div class="signup-link">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+            </div>
+
+            <p style="text-align:center; margin-top: 10px;">
+  <a href="forgot_password.html" style="color:#5498ba; font-weight:bold;">Forgot Password?</a>
+</p>
+        </div>
+
+    </div>
+
+</body>
+
+
+</html>
