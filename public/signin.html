@@ -29,7 +29,7 @@
         <div class="signin-box">
             <h2>Sign In</h2>
 
-            <form id="signinForm" action="/signin" method="POST">
+            <form id="signinForm">
 
                 <label for="email">Email Address</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email" required>
@@ -51,7 +51,51 @@
         </div>
     </div>
 
+    <div id="errorDialog" class="dialog">
+    <div class="dialog-box">
+        <h3>Error</h3>
+        <p id="errorMessage"></p>
+        <button onclick="closeErrorDialog()">Try Again</button>
+    </div>
+</div>
+
+
 <script src="../js/navbarsettings.js"></script>
+
+<script>
+document.getElementById("signinForm").addEventListener("submit", async function(e) {
+    e.preventDefault(); // stop form from submitting normally
+
+    const response = await fetch("/signin", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value
+        })
+    });
+
+    const result = await response.json();
+
+    if (result.error) {
+        showErrorDialog(result.error);
+    } else if (result.success) {
+        window.location.href = result.redirect;
+    }
+});
+
+function showErrorDialog(message) {
+    document.getElementById("errorMessage").textContent = message;
+    document.getElementById("errorDialog").style.display = "flex";
+}
+
+function closeErrorDialog() {
+    document.getElementById("errorDialog").style.display = "none";
+}
+</script>
+
 
 </body>
 </html>
