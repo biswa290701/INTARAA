@@ -1,17 +1,20 @@
-const User = require("../models/User");
-const crypto = require("crypto");
-const nodemailer = require("nodemailer");
-const bcrypt = require("bcrypt");
+import dotenv from "dotenv";
+import User from "../models/User.js";
+import { randomBytes } from "crypto";
+import { createTransport } from "nodemailer";
+import { hash } from "bcrypt";
 
-const transporter = nodemailer.createTransport({
+dotenv.config();
+
+const transporter = createTransport({
   service: "gmail",
   auth: {
-    user: "biswa290701@gmail.com",
-    pass: "atcj zvgr seft cqba",
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
 });
 
-exports.forgotPassword = async (req, res) => {
+export async function forgotPassword(req, res) {
   const { email } = req.body;
 
   try {
@@ -19,13 +22,13 @@ exports.forgotPassword = async (req, res) => {
     if (!user)
       return res.status(400).json({ error: "No account found with this email." });
 
-    const token = crypto.randomBytes(32).toString("hex");
+    const token = randomBytes(32).toString("hex");
 
     user.resetToken = token;
     user.resetTokenExpiry = new Date(Date.now() + 15 * 60 * 1000);
     await user.save();
 
-    const link = `http://localhost:3000/reset_password.html?token=${token}`;
+    const link = `${req.protocol}://${req.get("host")}/reset_password.html?token=${token}`;
 
     await transporter.sendMail({
       from: "INTARAA Support <noreply@intaraa.com>",
@@ -38,16 +41,16 @@ exports.forgotPassword = async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: "Something went wrong." });
   }
-};
+}
 
-exports.resetPassword = async (req, res) => {
+export async function resetPassword(req, res) {
   const { token, password, confirm } = req.body;
 
   try {
     if (password !== confirm)
       return res.status(400).json({ error: "Passwords do not match." });
 
-    const user = await User.findOne({
+    const user = await findOne({
       resetToken: token,
       resetTokenExpiry: { $gt: new Date() },
     });
@@ -55,7 +58,7 @@ exports.resetPassword = async (req, res) => {
     if (!user)
       return res.status(400).json({ error: "Invalid or expired link." });
 
-    user.password = await bcrypt.hash(password, 10);
+    user.password = await hash(password, 10);
     user.resetToken = undefined;
     user.resetTokenExpiry = undefined;
 
@@ -65,4 +68,4 @@ exports.resetPassword = async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: "Something went wrong." });
   }
-};
+}

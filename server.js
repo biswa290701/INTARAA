@@ -1,37 +1,29 @@
-require("dotenv").config();
+import express, { urlencoded, json } from "express";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+import session from "express-session";
+import store from "./src/config/db.js";
 
-const express = require("express");
-const path = require("path");
-const session = require("express-session");
-const MongoDBStore = require("connect-mongodb-session")(session);
-require("./config/db");
-
-const unityHeaders = require("./middleware/unityHeaders");
+// Unity Headers Middleware
+// import unityHeaders from "./src/middleware/unityHeaders.js";
 
 // ROUTES
-const authRoutes = require("./routes/authRoutes");
-const passwordRoutes = require("./routes/passwordRoutes");
-const contactRoutes = require("./routes/contactRoutes");
-const sessionRoutes = require("./routes/sessionRoutes");
+import authRoutes from "./src/routes/authRoutes.js";
+import passwordRoutes from "./src/routes/passwordRoutes.js";
+import contactRoutes from "./src/routes/contactRoutes.js";
+import sessionRoutes from "./src/routes/sessionRoutes.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 app.set("trust proxy", 1);
 
-const PORT = process.env.PORT || 3000;
-
-// SESSION STORE
-const store = new MongoDBStore({
-  uri: process.env.MONGO_URI,
-  collection: "sessions",
-});
-
-store.on("error", (err) => console.log("SESSION STORE ERROR:", err));
-
 // GLOBAL MIDDLEWARE
-app.use(unityHeaders);
-app.use(express.static(path.join(__dirname, "public")));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// app.use(unityHeaders);
+app.use(express.static(join(__dirname, "./src/views")));
+app.use(urlencoded({ extended: true }));
+app.use(json());
 
 app.use(
   session({
@@ -51,6 +43,8 @@ app.use(passwordRoutes);
 app.use(contactRoutes);
 app.use(sessionRoutes);
 
+const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () =>
-  console.log(`✅ Server running at http://localhost:${PORT}`)
+  console.log(`Server running at http://localhost:${PORT}`)
 );

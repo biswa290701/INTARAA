@@ -1,20 +1,23 @@
-const nodemailer = require("nodemailer");
+import dotenv from "dotenv";
+import { createTransport } from "nodemailer";
 
-const transporter = nodemailer.createTransport({
+dotenv.config();
+
+const transporter = createTransport({
   service: "gmail",
   auth: {
-    user: "biswa290701@gmail.com",
-    pass: "atcj zvgr seft cqba",
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
 });
 
-exports.contactForm = (req, res) => {
+export function contactForm(req, res) {
   const { name, email, message } = req.body;
 
   transporter.sendMail(
     {
       from: email,
-      to: "biswa290701@gmail.com",
+      to: process.env.EMAIL_USER,
       subject: `New message from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
     },
@@ -23,15 +26,15 @@ exports.contactForm = (req, res) => {
       res.redirect("/thankyou.html");
     }
   );
-};
+}
 
-exports.demoForm = (req, res) => {
+export function demoForm(req, res) {
   const { name, email, company, role, message } = req.body;
 
   transporter.sendMail(
     {
       from: email,
-      to: "biswa290701@gmail.com",
+      to: process.env.EMAIL_USER,
       subject: `New Demo Booking From ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nRole: ${role}\nMessage: ${message}`,
     },
@@ -40,4 +43,4 @@ exports.demoForm = (req, res) => {
       res.redirect("/thankyou.html");
     }
   );
-};
+}

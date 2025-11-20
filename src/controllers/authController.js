@@ -1,7 +1,7 @@
-const User = require("../models/User");
-const bcrypt = require("bcrypt");
+import User from "../models/User.js";
+import { compare, hash } from "bcrypt";
 
-exports.signIn = async (req, res) => {
+export async function signIn(req, res) {
   const { email, password } = req.body;
 
   try {
@@ -9,7 +9,7 @@ exports.signIn = async (req, res) => {
     if (!user)
       return res.status(400).json({ error: "No account found with this email." });
 
-    const match = await bcrypt.compare(password, user.password);
+    const match = await compare(password, user.password);
     if (!match)
       return res.status(400).json({ error: "Incorrect password." });
 
@@ -28,19 +28,19 @@ exports.signIn = async (req, res) => {
     console.error(err);
     res.status(500).json({ error: "Something went wrong." });
   }
-};
+}
 
-exports.signUp = async (req, res) => {
+export async function signUp(req, res) {
   const { name, email, password, confirm } = req.body;
 
   if (password !== confirm)
     return res.status(400).send("Passwords do not match.");
 
   try {
-    const existing = await User.findOne({ email });
+    const existing = await findOne({ email });
     if (existing) return res.status(400).send("Email is already registered.");
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await hash(password, 10);
 
     const user = new User({
       name,
@@ -54,10 +54,10 @@ exports.signUp = async (req, res) => {
     console.error(err);
     res.status(500).send("Something went wrong.");
   }
-};
+}
 
-exports.logout = (req, res) => {
+export function logout(req, res) {
   req.session.destroy(() => {
     res.redirect("/signin.html");
   });
-};
+}

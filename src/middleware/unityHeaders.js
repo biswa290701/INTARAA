@@ -1,4 +1,5 @@
-module.exports = (req, res, next) => {
+
+export default (req, res, next) => {
   if (req.url.endsWith(".unityweb")) {
     res.setHeader("Content-Type", "application/octet-stream");
     res.setHeader("Content-Encoding", "identity");

@@ -1,4 +1,4 @@
-exports.sessionUser = (req, res) => {
+export function sessionUser(req, res) {
   if (req.session.user) {
     return res.json({
       loggedIn: true,
@@ -9,4 +9,4 @@ exports.sessionUser = (req, res) => {
   }
 
   res.json({ loggedIn: false });
-};
+}
