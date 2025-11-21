@@ -12,6 +12,8 @@ import authRoutes from "./src/routes/authRoutes.js";
 import passwordRoutes from "./src/routes/passwordRoutes.js";
 import contactRoutes from "./src/routes/contactRoutes.js";
 import sessionRoutes from "./src/routes/sessionRoutes.js";
+import chatRoutes from "./src/routes/chatRoutes.js";
+import caseUploadRoutes from "./src/routes/caseUploadRoutes.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -42,6 +44,8 @@ app.use(authRoutes);
 app.use(passwordRoutes);
 app.use(contactRoutes);
 app.use(sessionRoutes);
+app.use(chatRoutes);
+app.use(caseUploadRoutes);
 
 const PORT = process.env.PORT || 3000;
 

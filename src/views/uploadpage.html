@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload Case</title>
+  <style>
+    body { font-family: Arial; margin: 40px; }
+    input, textarea { width: 100%; padding: 8px; margin: 10px 0; }
+    button { padding: 10px 20px; }
+  </style>
+</head>
+<body>
+  <h1>Upload Case Data</h1>
+  <form action="/caseUpload" method="POST">
+    <label>Case Prompt</label>
+    <textarea name="CasePrompt" required></textarea>
+
+    <label>Case Voice ID (optional)</label>
+    <input type="text" name="CaseVoiceId" placeholder="21m00Tcm4TlvDq8ikWAM">
+
+    <button type="submit">Upload Case</button>
+  </form>
+</body>
+</html>
