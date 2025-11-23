@@ -1,0 +1,86 @@
+/* PRICING SECTION */
+.pricing {
+    padding: 100px 10%;
+    text-align: center;
+    background: linear-gradient(135deg, #141433 0%, #0b0b21 100%);
+}
+
+.pricing h2 {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.subheading {
+    color: #b9b9b9;
+    margin-bottom: 40px;
+}
+
+/* Cards Container */
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/* Individual Pricing Cards */
+.pricing-card {
+    background: rgba(255,255,255,0.06);
+    padding: 35px 30px;
+    width: 300px;
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(84, 152, 186, 0.25);
+    box-shadow: 0 0 20px rgba(84, 152, 186, 0.15);
+    transition: 0.3s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 30px rgba(84, 152, 186, 0.3);
+}
+
+.pricing-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.price-tag {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Pricing Features */
+.pricing-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.pricing-card ul li {
+    color: #d6d6d6;
+    margin: 10px 0;
+    font-size: 15px;
+}
+
+/* CONTACT BUTTON UNDER CARDS */
+.pricing-cta {
+    margin-top: 50px;
+}
+
+/* ============================================================
+   MOBILE ONLY — BELOW 900px
+   (Desktop remains untouched)
+   ============================================================ */
+@media(max-width: 900px) {
+    .pricing-container {
+        gap: 25px;
+    }
+
+    .pricing-card {
+        width: 100%;
+        max-width: 330px;
+        margin: 0 auto;
+    }
+}

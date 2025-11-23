@@ -3,29 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INTARAA Landing Page</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>INTARAA – Visual AI Assistants</title>
+    <link rel="stylesheet" href="css/style_demo.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/pricing.css">
+    <link rel="stylesheet" href="css/about.css">
 </head>
 <body>
-    
+
+    <!-- NAVIGATION -->
     <header class="navbar">
-        <h1 class="logo">INTARAA</h1>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="signin.html">Sign In</a></li>
+        <h1 class="logo">
+            <a href="#home">INTARAA</a>
+        </h1>
+
+        <!-- HAMBURGER ICON -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#pricing">Prices</a></li>
+            <li><a href="#about">About Us</a></li>
         </ul>
     </header>
-    
-    <section class="new_hope">
-        <h1>Want a Demo?</h1>
-        <p>Book a Demo Now From Team New Hope</p>
-        <a href="demo.html" class="btn">Book A Demo</a>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-text">
+            <h2>Visual AI <span>Assistant</span></h2>
+            <p>
+                A Visual AI Assistant is an intelligent humanoid digital avatar designed to 
+                revolutionize operations and conversations across industries. From customer 
+                support to product training, Visual AI accelerates service, reduces workload, 
+                and improves engagement using realistic facial animations.
+            </p>
+            <a href="game_pages/game.html" class="btn">DEMO</a>
+        </div>
+
+        <div class="hero-img">
+            <div class="hero-oval-frame">
+                <img src="image/test_img.jpeg" alt="AI Assistant">
+            </div>
+        </div>
     </section>
 
-    <script src="../js/navbarsettings.js"></script>
+    <!-- PRODUCTS SECTION -->
+    <section id="products" class="products">
+        <h2>Products</h2>
+        <p class="subheading">Showcasing</p>
+
+        <div class="product-container">
+
+            <div class="product-card">
+                <img src="image/product1.jpg" alt="Customer Support">
+                <h3>Customer Support & Inquiry Handling</h3>
+                <p>
+                    Handle customer queries instantly with a fully interactive AI avatar that provides 
+                    accurate responses and human-like interactions.
+                </p>
+                <a class="btn">VIEW MORE</a>
+            </div>
+
+            <div class="product-card">
+                <img src="image/product2.jpg" alt="Sales Assistance">
+                <h3>Product Demonstrations & Sales Assistance</h3>
+                <p>
+                    Showcase products with real-time explanations, helping customers understand features 
+                    with clear, interactive guidance.
+                </p>
+                <a class="btn">VIEW MORE</a>
+            </div>
+
+            <div class="product-card">
+                <img src="image/product3.jpg" alt="Training">
+                <h3>Employee Training & Onboarding</h3>
+                <p>
+                    Train employees with a lifelike AI instructor capable of scenario-based learning 
+                    and automated evaluation.
+                </p>
+                <a class="btn">VIEW MORE</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <h2>Prices</h2>
+        <p class="subheading">Choose what fits you</p>
+
+        <div class="pricing-container">
+
+            <!-- TIER 1 -->
+            <div class="pricing-card">
+                <h3>Basic</h3>
+                <p class="price-tag">$49 / month</p>
+                <ul>
+                    <li>1 AI Assistant</li>
+                    <li>Basic Facial Animation</li>
+                    <li>Standard TTS</li>
+                    <li>Email Support</li>
+                </ul>
+            </div>
+
+            <!-- TIER 2 -->
+            <div class="pricing-card">
+                <h3>Pro</h3>
+                <p class="price-tag">$99 / month</p>
+                <ul>
+                    <li>3 AI Assistants</li>
+                    <li>Advanced Animations</li>
+                    <li>Premium TTS</li>
+                    <li>Priority Support</li>
+                </ul>
+            </div>
+
+            <!-- TIER 3 -->
+            <div class="pricing-card">
+                <h3>Enterprise</h3>
+                <p class="price-tag">Custom</p>
+                <ul>
+                    <li>Unlimited Assistants</li>
+                    <li>Full Customization</li>
+                    <li>API Access</li>
+                    <li>Dedicated Manager</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <a href="contact.html" class="btn pricing-cta">CONTACT US</a>
+    </section>
+
+    <!-- ABOUT US -->
+    <section id="about" class="about">
+        <div class="about-image">
+            <img src="image/about.jpg" alt="AI Comparison">
+        </div>
+
+        <div class="about-text">
+            <h2>About Us</h2>
+            <p>
+                At INTARAA, we believe conversations should feel natural, human, and emotionally 
+                connected. Our Virtual AI Humans are designed with high-fidelity facial animation, 
+                realistic expressions, and fully dynamic responses.
+            </p>
+            <p>
+                With our expertise in AI, XR, and real-time rendering, we build digital humans that 
+                transform customer experience, training, and enterprise solutions.
+            </p>
+            <a href="contact.html" class="btn">CONTACT US</a>
+        </div>
+    </section>
+
+<script src="js/navbar_scrolling.js"></script>
+<script src="js/hamburg_js"></script>
+
 </body>
 </html>

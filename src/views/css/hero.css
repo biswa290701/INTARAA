@@ -1,0 +1,125 @@
+/* === HERO SECTION (DESKTOP) — UNCHANGED === */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 120px 10%;
+    background: linear-gradient(135deg, #2d2366 0%, #0a0a1f 70%);
+    gap: 80px; /* space between text + image */
+}
+
+.hero-text {
+    flex: 1;
+    max-width: 550px;
+    text-align: left; /* ensures desktop stays aligned left */
+}
+
+.hero-text h2 {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.hero-text p {
+    margin: 20px 0;
+    line-height: 1.6;
+}
+
+/* Oval Frame Container */
+.hero-oval-frame {
+    width: 330px;
+    height: 420px;
+    border-radius: 50% / 60%;
+    padding: 12px;
+    background: #ffffff;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow:
+        0 0 20px rgba(255,255,255,0.2),
+        0 0 40px rgba(84,152,186,0.15);
+}
+
+/* Inner Border */
+.hero-oval-frame::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border-radius: 50% / 60%;
+    border: 3px solid rgba(130,195,255,0.4); /* bluish ring */
+    pointer-events: none;
+}
+
+/* Portrait Image */
+.hero-oval-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50% / 60%;
+}
+
+/* Grid Background Behind Frame */
+.hero-oval-frame::after {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 70px 70px;
+    background-position: center;
+    z-index: -1;
+    border-radius: 50% / 60%;
+}
+
+/* === MOBILE & TABLET (ONLY THESE CHANGE BELOW 900px) === */
+@media(max-width: 900px) {
+
+    .hero {
+        flex-direction: column; /* stack vertically */
+        text-align: center;     /* center ONLY on mobile */
+        padding: 100px 5% 50px 5%;
+        gap: 40px;
+    }
+
+    .hero-text {
+        max-width: 100%;
+        text-align: center; /* override desktop left-align ONLY on mobile */
+    }
+
+    .hero-text h2 {
+        font-size: 36px;
+    }
+
+    .hero-img img {
+        width: 260px;
+        margin: 0 auto;
+    }
+
+    .hero-oval-frame {
+        width: 260px;
+        height: 340px;
+    }
+}
+
+/* Extra small screens */
+@media(max-width: 500px) {
+
+    .hero-img img {
+        width: 200px;
+    }
+
+    .hero-text h2 {
+        font-size: 32px;
+    }
+
+    .hero-text p {
+        font-size: 15px;
+    }
+
+    .hero-oval-frame {
+        width: 220px;
+        height: 300px;
+    }
+}

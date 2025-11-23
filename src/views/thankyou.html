@@ -6,59 +6,100 @@
     <title>Thank You – INTARAA</title>
 
     <style>
+        /* Reset + Base */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
         }
 
+        /* Background matches your contact/game theme */
         body {
-            background-color: #f2f8fc;
+            background: linear-gradient(135deg, #1b1b3d 0%, #0f0f26 80%);
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
+            padding: 2rem;
+            color: #fff;
             text-align: center;
-            padding: 1rem;
         }
 
+        /* Glassmorphic card */
         .container {
-            background: white;
-            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3rem 2.5rem;
             border-radius: 12px;
             max-width: 600px;
             width: 100%;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(84, 152, 186, 0.25);
+            box-shadow: 0 0 20px rgba(84, 152, 186, 0.2);
+            animation: fadeIn 0.8s ease;
         }
 
         h1 {
             font-size: 2.4rem;
-            color: #1a3340;
-            margin-bottom: 1rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            color: #fff;
         }
 
         p {
-            font-size: 1.1rem;
-            color: #444;
-            margin-bottom: 2rem;
+            font-size: 1.15rem;
+            color: #d6d6d6;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
         }
 
+        /* Metallic pill button (matches .btn site-wide) */
         .btn {
             display: inline-block;
-            padding: 12px 24px;
-            background: #5498ba;
-            color: white;
+            padding: 12px 32px;
+            background: linear-gradient(90deg, #e6e6e6 0%, #b8b8b8 100%);
+            color: #000;
             font-size: 1rem;
-            border-radius: 6px;
+            font-weight: 700;
+            border-radius: 40px;
             text-decoration: none;
+            letter-spacing: 1px;
+
+            box-shadow:
+                inset 0 1px 4px rgba(255, 255, 255, 0.8),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.15),
+                0 3px 10px rgba(0, 0, 0, 0.25);
+
             transition: 0.3s ease;
-            font-weight: bold;
         }
 
         .btn:hover {
-            background: #1a3340;
-            color: #fff;
+            background: linear-gradient(90deg, #ffffff 0%, #d0d0d0 100%);
+            transform: translateY(-2px);
+            box-shadow:
+                inset 0 1px 4px rgba(255,255,255,0.8),
+                inset 0 -2px 4px rgba(0,0,0,0.15),
+                0 6px 16px rgba(0,0,0,0.35);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .container {
+                padding: 2.2rem 1.8rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>

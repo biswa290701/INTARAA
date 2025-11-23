@@ -1,0 +1,177 @@
+/* ============================================================
+   GLOBAL PAGE STYLES
+   ============================================================ */
+body {
+    margin: 0;
+    padding-top: 70px; /* height of fixed navbar only */
+    background: linear-gradient(135deg, #13133a 0%, #070716 100%);
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+/* ============================================================
+   FIXED HEADER BLOCK (NAVBAR)
+   ============================================================ */
+#fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2000;
+    background: rgba(10, 10, 25, 0.75);
+    backdrop-filter: blur(10px);
+    padding-bottom: 10px;
+}
+
+/* Hide entire header & back button when fullscreen */
+.fullscreen-active #fixed-header,
+.fullscreen-active .back-btn {
+    display: none !important;
+}
+
+/* ============================================================
+   BACK BUTTON BELOW NAVBAR
+   ============================================================ */
+.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 50px;
+
+    /* Metallic gradient */
+    background: linear-gradient(90deg, #e6e6e6 0%, #b8b8b8 100%);
+
+    /* Text */
+    color: #000;
+    font-size: 16px;
+    font-weight: 700; /* Bold */
+    letter-spacing: 1px;
+    text-decoration: none;
+
+    /* Shape */
+    padding: 12px 32px;
+    border-radius: 40px;
+
+    /* Effects */
+    box-shadow:
+        inset 0 1px 4px rgba(255,255,255,0.8),
+        inset 0 -2px 4px rgba(0,0,0,0.15),
+        0 3px 10px rgba(0,0,0,0.25);
+    transition: 0.3s ease;
+}
+
+.back-btn:hover {
+    background: linear-gradient(90deg, #ffffff 0%, #d0d0d0 100%);
+    transform: translateY(-2px);
+
+    box-shadow:
+        inset 0 1px 4px rgba(255,255,255,0.8),
+        inset 0 -2px 4px rgba(0,0,0,0.15),
+        0 6px 16px rgba(0,0,0,0.35);
+}
+
+/* ============================================================
+   UNITY PLAYER FRAME (NON-FULLSCREEN)
+   ============================================================ */
+#unity-wrapper {
+    width: 900px;
+    max-width: 95%;
+    margin: 20px auto; /* reduced spacing below back button */
+    background: rgba(10, 10, 30, 0.7);
+    border: 2px solid #5498ba;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(84, 152, 186, 0.2);
+    position: relative;
+}
+
+#unity-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+}
+
+#unity-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 8px;
+}
+
+/* ============================================================
+   FULLSCREEN BUTTON
+   ============================================================ */
+#fullscreen-button {
+    margin-top: 15px;
+    background: linear-gradient(90deg, #e6e6e6 0%, #b8b8b8 100%);
+    padding: 12px 32px;
+    border-radius: 40px;
+    cursor: pointer;
+    color: #000;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+    display: none;
+    box-shadow:
+        inset 0 1px 4px rgba(255,255,255,0.8),
+        inset 0 -2px 4px rgba(0,0,0,0.15),
+        0 3px 10px rgba(0,0,0,0.25);
+}
+
+#fullscreen-button:hover {
+    background: linear-gradient(90deg, #ffffff 0%, #d0d0d0 100%);
+    transform: translateY(-2px);
+    box-shadow:
+        inset 0 1px 4px rgba(255,255,255,0.8),
+        inset 0 -2px 4px rgba(0,0,0,0.15),
+        0 6px 16px rgba(0,0,0,0.35);
+}
+
+/* ============================================================
+   LOADING BAR + LOGO
+   ============================================================ */
+#unity-loading-bar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 400px;
+    text-align: center;
+    color: #fff;
+    transition: opacity 0.5s ease;
+    z-index: 5;
+}
+
+#unity-logo {
+    width: 150px;
+    height: 130px;
+    background: url("../TemplateData/unity-logo-dark.png") no-repeat center;
+    background-size: contain;
+    margin: 0 auto 20px;
+}
+
+#unity-progress-bar-empty {
+    width: 100%;
+    height: 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid #5498ba;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 8px rgba(84, 152, 186, 0.5);
+}
+
+#unity-progress-bar-full {
+    height: 100%;
+    width: 0%;
+    background-color: #5498ba;
+    border-radius: 6px;
+    transition: width 0.4s ease;
+}
+
+#unity-loading-text {
+    margin-top: 12px;
+    font-size: 1rem;
+    opacity: 0.9;
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INTARAA WebGL Demo</title>
+
+  <link rel="stylesheet" href="../css/style_demo.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/game.css">
+</head>
+
+<body>
+
+  <div id="fixed-header">
+
+      <header class="navbar" id="top-navbar">
+          <h1 class="logo">
+              <a href="../index.html#home">INTARAA</a>
+          </h1>
+
+          <div class="hamburger" id="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+          </div>
+
+          <ul class="nav-links" id="nav-links">
+              <li><a href="../index.html#home">Home</a></li>
+              <li><a href="../index.html#products">Products</a></li>
+              <li><a href="../index.html#pricing">Prices</a></li>
+              <li><a href="../index.html#about">About Us</a></li>
+          </ul>
+      </header>
+  </div>
+
+  <a href="../index.html" class="back-btn">← Back</a>
+
+  <div id="unity-wrapper">
+    <div id="unity-container">
+      <canvas id="unity-canvas"></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+        <div id="unity-loading-text">Loading...</div>
+      </div>
+    </div>
+
+    <!-- Fullscreen Button -->
+    <div id="fullscreen-button">⤢ Fullscreen</div>
+  </div>
+
+  <script>
+    const buildUrl = "../Builds/Build_Test_1";
+    const loaderUrl = buildUrl + "/Test_Build.loader.js";
+
+    const config = {
+      dataUrl: buildUrl + "/Test_Build.data.unityweb",
+      frameworkUrl: buildUrl + "/Test_Build.framework.js.unityweb",
+      codeUrl: buildUrl + "/Test_Build.wasm.unityweb",
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: "INTARAA",
+      productName: "WebGL Demo",
+      productVersion: "1.0",
+    };
+
+    const canvas = document.querySelector("#unity-canvas");
+    const loadingBar = document.querySelector("#unity-loading-bar");
+    const progressBarFull = document.querySelector("#unity-progress-bar-full");
+    const loadingText = document.querySelector("#unity-loading-text");
+
+    const script = document.createElement("script");
+    script.src = loaderUrl;
+
+    script.onload = () => {
+      createUnityInstance(canvas, config, (progress) => {
+        progressBarFull.style.width = (progress * 100) + "%";
+        loadingText.textContent = `Loading... ${Math.round(progress * 100)}%`;
+      }).then((unityInstance) => {
+        loadingBar.style.opacity = 0;
+        setTimeout(() => loadingBar.style.display = "none", 500);
+        document.getElementById("fullscreen-button").style.display = "inline-block";
+
+        document.getElementById("fullscreen-button").onclick = () => {
+        unityInstance.SetFullscreen(1);
+
+        // Add class to hide navbar
+        document.body.classList.add("fullscreen-active");
+        };
+
+        // Detect when exiting fullscreen (Escape or browser exit)
+        document.addEventListener("fullscreenchange", () => {
+          if (!document.fullscreenElement) {
+          document.body.classList.remove("fullscreen-active");
+          }
+          });
+
+      }).catch((message) => alert(message));
+    };
+
+    document.body.appendChild(script);
+  </script>
+
+  <script src="../js/navbar_scrolling.js"></script>
+  <script src="../js/hamburg.js"></script>
+
+</body>
+</html>
