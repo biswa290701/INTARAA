@@ -60,3 +60,22 @@ body {
         inset 0 -2px 4px rgba(0,0,0,0.15),
         0 6px 16px rgba(0,0,0,0.35);
 }
+
+/* ===== ANIMATION INITIAL STATE ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+}
+
+/* ===== WHEN VISIBLE ===== */
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* When leaving view — fade out smoothly */
+.reveal.hidden {
+    opacity: 0;
+    transform: translateY(40px);
+}
